@@ -16,8 +16,11 @@ Regras:
 
 Resultado:
 Foi criada seguinte solução:
+
 1 - PortariaRemotaAPI: Projeto API Core para acesso e gerenciamento dos dados no banco MySql, EF Code First que é responsável por criar todo o modelo automaticamente e Fluent Validation que é responsável por validar todo o contexto antes de enviar qualquer dado para o banco.
+
 2 - WebPortariaRemota: Projeto Asp.Net Core para exibição e manipulação dos dados disponibilizados pela API.
+
 3 - TestPortariaRemotaApi: Projeto XUnit criado para validar regras da API.
 
 Instalação:
@@ -25,9 +28,11 @@ Instalação:
  * Caso não seja possível criar o usuário solicitado, certificar-se de que o arquivo appsettings.json (projeto PortariaRemotaAPI) está devidamente configurado com o endereço, porta, usuário e senha do banco MySql disponível para uso.
 
   Via prompt de comandos:
+  
     1 - Acessar diretório PortariaRemotaAPI.
       * - Executar comando: > dotnet ef database update . Este comando é responsável por criar a base dados e configurá-la com os dados iniciais.
       * - Executar comando: > dotnet run . Este comando inicia a API, liberando seu acesso para Localhost:5000 (http) e Locahost:5001 (https). Para testar a API e seu funcionamento você pode abrir um browser e acessar o endereço: https://localhost:5001/swagger -- O swagger foi usado para geração automática da documentação e uso da API.
+      
     2 - Abrir um segundo prompt de comandos e acessar o diretório WebPortariaRemota.
       * - Executar o comando: > dotnet run. Este comando inicia a API, liberando seu acesso para Localhost:5002 (http) e Locahost:5003 (https). Para acessar o site basta usar o endereço: https://localhost:5003
 

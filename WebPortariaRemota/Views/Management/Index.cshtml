@@ -1,0 +1,68 @@
+﻿@model IEnumerable<WebPortariaRemota.Models.ApartamentoViewModel>
+
+@{
+    ViewData["Title"] = "Apartamentos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Apartamentos</h2>
+
+@using (Html.BeginForm("Index", "Management"))
+{
+<div class="panel panel-info">
+    <div class="panel-heading">Consulta</div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-xs-3">
+                <input type="text" name="mySearch" class="form-control" />
+            </div>
+            <div class="col-xs-2">
+                <input type="submit" value="Consultar" class="form-control">
+            </div>
+        </div>
+    </div>
+</div>
+}
+
+<p>
+    <span class="glyphicon glyphicon-plus"></span>
+    @Html.ActionLink("Criar Novo Apartamento", "CreateApartamento", "Management")
+</p>
+
+@if (Model is null || Model.Count() == 0)
+{
+    <h4>Não há Apartamentos cadastrados até o momento.</h4>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Bloco)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Numero)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Bloco)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Numero)
+                    </td>
+                    <td>
+                        @Html.ActionLink("", "EditApartamento", new { Id = item.ApartamentoId }, new { @class = "glyphicon glyphicon-edit" }) |
+                        @Html.ActionLink("", "DeleteApartamento", new { Id = item.ApartamentoId }, new { onclick = "return confirm('Deseja deletar o Apartamento e seus moradores?');", @class = "glyphicon glyphicon-trash" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

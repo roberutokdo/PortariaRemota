@@ -1,0 +1,47 @@
+﻿@model WebPortariaRemota.Models.ApartamentoViewModel
+
+@{
+    ViewData["Title"] = "Inclusão Apartamento";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Incluir Apartamento</h2>
+
+<hr />
+<div class="panel panel-warning">
+    <div class="panel-heading">Importante</div>
+    <div class="panel-body">* O cadastro de apartamentos somente é possível com a vinculação de um morador. Preencha os dados e você será redirecionado para cadastrar o morador.</div>
+</div>
+@using (Html.BeginForm())
+{
+    <div class="panel panel-info">
+        <div class="panel-heading">Apartamento</div>
+        <div class="panel-body">
+            @Html.AntiForgeryToken()
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Bloco, "Bloco", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="input-group">
+                        @Html.EditorFor(model => model.Bloco, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Bloco, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Numero, "Número", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="input-group">
+                        @Html.EditorFor(model => model.Numero, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Numero, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Próximo" class="btn btn-success" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<div>
+    <a asp-action="Index">Voltar para lista</a>
+</div>
+

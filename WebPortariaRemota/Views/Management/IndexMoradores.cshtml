@@ -1,0 +1,98 @@
+﻿@model IEnumerable<WebPortariaRemota.Models.MoradorViewModel>
+
+@{
+    ViewData["Title"] = "Moradores";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Moradores</h1>
+
+@using (Html.BeginForm("IndexMoradores", "Management"))
+{
+    <div class="panel panel-info">
+        <div class="panel-heading">Consulta</div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-xs-3">
+                    <input type="text" name="mySearch" class="form-control" />
+                </div>
+                <div class="col-xs-2">
+                    <input type="submit" value="Consultar" class="form-control">
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<p>
+    <span class="glyphicon glyphicon-plus"></span>
+    @Html.ActionLink("Criar Novo Morador", "CreateMorador", "Management")
+</p>
+
+@if (Model is null || Model.Count() == 0)
+{
+    <h4>Não há Moradores cadastrados até o momento.</h4>
+}
+else
+{
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataNascimento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CPF)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EMail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apartamento.Bloco)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apartamento.Numero)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataNascimento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Telefone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CPF)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EMail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Apartamento.Bloco)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Apartamento.Numero)
+                </td>
+                <td>
+                    @Html.ActionLink("", "EditMorador", new { Id = item.MoradorId }, new { @class = "glyphicon glyphicon-edit" }) |
+                    @Html.ActionLink("", "DeleteMorador", new { Id = item.MoradorId }, new { onclick = "return confirm('Deseja deletar o Morador?');", @class = "glyphicon glyphicon-trash" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+}

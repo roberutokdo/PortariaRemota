@@ -1,0 +1,76 @@
+﻿@model WebPortariaRemota.Models.MoradorViewModel
+
+@{
+    ViewData["Title"] = "Edição Morador";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edição de Moradores</h1>
+
+<span class="alert-success">@ViewBag.Status</span>
+<span class="alert-warning">@ViewBag.Message</span>
+
+<hr />
+@using (Html.BeginForm())
+{
+    <div class="panel panel-info">
+        <div class="panel-heading">Morador</div>
+        <div class="panel-body">
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(model => model.MoradorId)
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <span class="control-label col-md-2"><b>Apartamento</b></span>
+                    <div class="col-xs-3">
+                        @Html.DropDownListFor(m => m.SelectApartamento, Model.Apartamentos, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.SelectApartamento, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Nome, "Nome", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-xs-3">
+                        @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DataNascimento, "Data de Nasc.", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-xs-2">
+                        @Html.EditorFor(model => model.DataNascimento, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.DataNascimento, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Telefone, "Telefone", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-xs-2">
+                        @Html.EditorFor(model => model.Telefone, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Telefone, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CPF, "CPF", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-xs-2">
+                        @Html.EditorFor(model => model.CPF, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CPF, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.EMail, "Email", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-xs-3">
+                        @Html.EditorFor(model => model.EMail, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.EMail, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Salvar" class="btn btn-success" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    <a asp-action="IndexMoradores">Voltar para Lista</a>
+</div>
+

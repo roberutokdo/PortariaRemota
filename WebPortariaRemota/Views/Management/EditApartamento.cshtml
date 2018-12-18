@@ -1,0 +1,55 @@
+﻿@model WebPortariaRemota.Models.ApartamentoViewModel
+
+@{
+    ViewData["Title"] = "Edição Apartamento";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>EditApartamento</h1>
+
+<h4>ApartamentoViewModel</h4>
+<hr />
+
+<span class="alert-success">@ViewBag.Status</span>
+<span class="alert-warning">@ViewBag.Message</span>
+
+@using (Html.BeginForm())
+{
+    <div class="panel panel-info">
+        <div class="panel-heading">Apartamento</div>
+        <div class="panel-body">
+            @Html.AntiForgeryToken()
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.ApartamentoId)
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ApartamentoId, "Código", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="input-group">
+                        @Html.Label("", Model.ApartamentoId.ToString(), htmlAttributes: new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Bloco, "Bloco", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="input-group">
+                        @Html.EditorFor(model => model.Bloco, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Bloco, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Numero, "Número", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="input-group">
+                        @Html.EditorFor(model => model.Numero, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Numero, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Salvar" class="btn btn-success" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

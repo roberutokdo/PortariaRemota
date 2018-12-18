@@ -50,7 +50,9 @@ Instalação:
 
     Os Testes:
     Foi criado um projeto de Testes usando o XUnit. Para executar o projeto use os passos abaixo:
-    1 - Abra um novo prompt de comando e acesse o diretório TestPortariaRemotaApi\bin\Debug\netcoreapp2.1.
+    1- Abra um novo prompt de comando e acesse o diretório TestPortariaRemotaApi.
+      * - Executar o comando: > dotnet build . Este comando executa a compilação do projeto.
+    2 - Acesse o diretório TestPortariaRemotaApi\bin\Debug\netcoreapp2.1.
       * - Executar o comando: > dotnet vstest TestPortariaRemotaApi.dll -lt
           Este comando é responsável por listar todos os testes disponíveis no projeto. Foi criado um total de 20 testes para o projeto da API.
       * - Executar o comando: > dotnet vstest TestPortariaRemotaApi.dll

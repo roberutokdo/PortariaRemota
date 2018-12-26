@@ -40,8 +40,11 @@ Instalação:
    O web site foi criado com as seguintes páginas:
 
    Home -> Usada apenas como página de apresentação.
+   
    Apartamentos -> Usada para gerenciamento dos apartamentos, nesta página está disponível o acesso à visualização, inserção, alteração e exclusão de registros.
+   
    Moradores -> Usada para gerenciamento dos moradores, nesta página está disponível o acesso à visualização, inserção, alteração e exclusão de registros.
+   
    * Todas as páginas, exceto Home, exigem que o usuário esteja logado no sistema, para isso foi criado o login:
      User : Kiper
      Senha: Kiper@2018
